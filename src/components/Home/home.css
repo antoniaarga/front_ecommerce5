@@ -1,0 +1,27 @@
+.logosection {
+    background: url(../img/background.jpeg) no-repeat center fixed;
+    height: 90vh;
+    background-size: cover;
+    object-position: 15% 100%;;
+    max-width: 100%;
+    margin: 0;
+    padding-top: 80px;
+    
+  }
+  
+  .bajada-header {
+    color: #ffffff;
+    font-size: 2vh;
+    font-weight: 300;
+    margin-top: 20px;
+    
+  }
+ 
+
+  .logo {
+    max-width: 40%;
+    min-width: 40%;
+    margin-bottom: 40px;
+  }
+  
+  

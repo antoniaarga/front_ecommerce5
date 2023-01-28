@@ -1,0 +1,15 @@
+.mini-logo{
+    width: 150px;
+
+}
+
+nav {
+    background-color: #212529;
+    font-size: small;
+    font-weight: 300;
+    color: white;
+}
+
+.item-nav{
+    color: white;
+}

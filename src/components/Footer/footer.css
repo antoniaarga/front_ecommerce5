@@ -1,0 +1,41 @@
+.main-footer {
+  color: white;
+  background-color: #212529;
+  padding-top: 20px;
+  padding-bottom: 1px;
+  position:static;
+  bottom: 0;
+  width: 100%;
+ 
+  
+}
+
+.logo-footer{
+  width: 200px;
+}
+
+li {
+  font-size:10px;
+}
+
+.titulo-footer{
+  font-size:small;
+  
+}
+
+.texto-derechos{
+  font-size: 8px;
+  text-align: center;
+  
+}
+
+.links-footer{
+  color: white;
+}
+
+.hr{
+  margin-top: 1px;
+}
+.redes{
+  text-align: center;
+}
