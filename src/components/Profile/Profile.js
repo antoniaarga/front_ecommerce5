@@ -27,17 +27,7 @@ const Profile = () => {
             </Col>
 
             <Col lg={6} className="d-flex flex-column texto-datos">
-              <p> Antonia Argandoña</p>
-            </Col>
-          </Row>
-
-          <Row className="align-items-center">
-            <Col lg={6} className="d-flex flex-column">
-              <p className="datos-profile">Mail:</p>
-            </Col>
-
-            <Col lg={6} className="d-flex flex-column texto-datos">
-              <p> mantito@gmail.com</p>
+              <p>{user.name}</p>
             </Col>
           </Row>
 
@@ -47,7 +37,7 @@ const Profile = () => {
             </Col>
 
             <Col lg={6} className="d-flex flex-column texto-datos">
-              <p> Antoniaarga</p>
+              <p> {user.username} </p>
             </Col>
           </Row>
 
