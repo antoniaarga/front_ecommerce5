@@ -17,7 +17,7 @@ const Profile = () => {
       <Row className="w-50">
         
           <Col >
-          <img className="profile-icon" src={profile} alt=""/>
+          <img className="profile-icon" src={profile} alt=""x/>
             <p className="titulo-seccion mb-5">Mi Perfil</p>
           </Col>
 

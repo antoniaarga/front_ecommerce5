@@ -24,3 +24,4 @@ En el carrito se despliega la información básica para adquirir el producto.
 
 Siguiendo un orden lógico de navegación, encontramos un botón que deriva a la sección de Checkout. Que permite elegir el método de pago.
 
+[img](./template-proy5.jpg)
