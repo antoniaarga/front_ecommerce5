@@ -12,6 +12,7 @@ import { registroUsuario } from"../../services/user.service";
 import { useNavigate } from "react-router-dom";
 
 
+
 const SignUp = () => {
   const username = useRef(null);
   const password = useRef(null);

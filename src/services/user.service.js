@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuth } from "./AuthProvider";
 
 const baseURL = process.env.REACT_APP_API_URL;
 const signIn_API = async (username, password) => {
@@ -24,11 +25,13 @@ const readToken = async () => {
 };
 
 const signIn = async (username, password) => {
+ 
   const result = await signIn_API(username, password);
 
   if (result) {
     saveToken(result.data.token);
-    return true;
+   
+    return result.data.user;
   }
   return false;
 };

@@ -18,7 +18,7 @@ const Login = () => {
   const password = useRef(null);
   const navigate = useNavigate();
   const [alertaLogIn, setAlertaLogIn] = useState(false);
-  const {setAuth} = useAuth();
+  const {setAuth,setUser} = useAuth();
   
   const onSubmit = async () => {
   
@@ -28,6 +28,7 @@ const Login = () => {
     
     const loginConExito = await signIn(u, p);
     if (loginConExito){
+      setUser(loginConExito)
       setAuth(true)
       navigate("/perfil")
     }else {setAlertaLogIn(true)
