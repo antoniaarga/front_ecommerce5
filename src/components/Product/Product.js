@@ -31,17 +31,7 @@ const Product = () => {
        <Col lg={6} sm={12}>
         
 
-        <Col lg={6} sm={12}>
-        <img src={teclado1} className="imagen-principal" />
-      <Row>
-        <Col lg={6} md={6}>
-        <img src={vistateclado1} className="imagen-secundaria"/>
-        </Col>
-        <Col lg={6} md={6} >
-        <img src={vistateclado2} className="imagen-secundaria"/>
-        </Col>
-      </Row>
-        </Col>
+        
         <Col lg={6} sm={12}>
           
           <p className='text-infor-product'>Magma Mini</p>
