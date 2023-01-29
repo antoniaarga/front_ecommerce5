@@ -45,7 +45,7 @@ const NavBar = () => {
           <i class="fa-solid fa-cart-shopping"></i>
           </Nav.Link>
           
-          {auth?<Nav.Link className='item-nav' href="/logout">Cerrar sesión</Nav.Link>:null} {/* si hay algo en el token, que aparezca cerrar sesion */}
+          {auth?<Nav.Link className='item-nav' onClick={onLogout}>Cerrar sesión</Nav.Link>:null} {/* si hay algo en el token, que aparezca cerrar sesion */}
         </Nav>
       </Navbar.Collapse>
     </Container>
