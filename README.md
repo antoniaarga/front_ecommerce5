@@ -1,5 +1,10 @@
 
 Proyecto 5 sitio de comercio electronico Bootcamp de desarrollo web fullstack
+Proyecto creado con Node y Express en backend y con React en frontend.
+El despliegue se ha realizado utilizando Vercel y el Backend corre en Railway.
+
+
+
 
 WeGeeks es la nueva tienda de articulos electronicos que va a liderar la industria gamer del pais.
 
