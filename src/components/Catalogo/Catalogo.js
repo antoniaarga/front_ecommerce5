@@ -16,7 +16,21 @@ import pack1 from "../img/pack1.jpg"
 import pack2 from "../img/pack2.jpg"
 
 
-const Catalogo = () => {
+const Catalogo = async  () => {
+  const axiosConfig ={
+    headers:{
+        authorization:"Bearer "+ localStorage.getItem("token")
+    }, withCredentials: true,
+
+}
+const res = await axios.get(
+    `${baseURL}/product/all`,
+  axiosConfig
+);
+console.log("")
+console.log(res)
+
+
   return (
     <Container fluid>
     <center>

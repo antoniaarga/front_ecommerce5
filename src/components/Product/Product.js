@@ -1,7 +1,5 @@
 import React from 'react'
 import Container from 'react-bootstrap/esm/Container'
-
-
 import Row from 'react-bootstrap/esm/Row'
 import "../Product/product.css"
 import teclado1 from "../img/teclado1.jpg"
@@ -29,9 +27,6 @@ const Product = () => {
      </Row>
        </Col>
        <Col lg={6} sm={12}>
-        
-
-        
         <Col lg={6} sm={12}>
           
           <p className='text-infor-product'>Magma Mini</p>
