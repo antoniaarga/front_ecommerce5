@@ -27,7 +27,7 @@ const res = await axios.get(
     `${baseURL}/product/all`,
   axiosConfig
 );
-console.log("")
+console.log("hola")
 console.log(res)
 
 
@@ -41,23 +41,7 @@ console.log(res)
         <p className='titulo-seccion pt-5'>Productos más vendidos</p>
         </Row>
         <Row className='row-catalogo'>
-          <Col sm={6} md={6} lg={3}>
-            <Card className="card-catalogo" >
-              <Card.Img variant="top" className="foto-catalogo" src={mouse1} />
-              <Card.Body>
-                <Card.Title className="card-tittle">Kone XP Air</Card.Title>
-                <Card.Text className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <center>
-                  <Button size="sm" className="product-button" a href='/product'>
-                    Ver Producto
-                  </Button>
-                </center>
-              </Card.Body>
-            </Card>
-          </Col>
+          
           <Col sm={6} md={6} lg={3}>
             <Card className="card-catalogo" >
               <Card.Img variant="top" className="foto-catalogo" src={casco1} />
