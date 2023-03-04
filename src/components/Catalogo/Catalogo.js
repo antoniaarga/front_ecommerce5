@@ -20,9 +20,9 @@ import { useEffect, useState } from 'react';
 
 const Catalogo =   () => {
   const baseURL = process.env.REACT_APP_API_URL
-  const [post, setPost] = React.useState(null);
+  const [post, setPost] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const axiosConfig ={
       headers:{
           authorization:"Bearer "+ localStorage.getItem("token")
@@ -32,6 +32,7 @@ const Catalogo =   () => {
     axios.get( `${baseURL}/product/all`,
     axiosConfig).then((response) => {
       setPost(response.data);
+      console.log("respuesta api")
     });
   }, []);
 
