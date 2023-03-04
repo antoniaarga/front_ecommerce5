@@ -14,9 +14,11 @@ import mouse2 from "../img/mouse2.jpg"
 import teclado2 from "../img/teclado2.jpg"
 import pack1 from "../img/pack1.jpg"
 import pack2 from "../img/pack2.jpg"
+import axios from 'axios';
 
 
 const Catalogo = async  () => {
+  const baseURL = process.env.REACT_APP_API_URL
   const axiosConfig ={
     headers:{
         authorization:"Bearer "+ localStorage.getItem("token")
