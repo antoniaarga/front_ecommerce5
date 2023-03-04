@@ -29,7 +29,7 @@ const Catalogo = () => {
       withCredentials: true,
     };
     axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
-      setPost(response.data);
+      setPost(response.data.products);
       console.log("respuesta api");
     });
   }, [post]);
@@ -46,7 +46,7 @@ const Catalogo = () => {
         </Row>
 
         <Row className="row-catalogo">
-          {post.products.map((item) => (
+          {post.map((item) => (
             <Col sm={6} md={6} lg={3}>
               <Card className="card-catalogo">
                 <Card.Img
