@@ -52,7 +52,7 @@ console.log(post)
   
         <Row className='row-catalogo'>
 
-        {post.map(item => (
+        {post.products.map(item => (
        <Col sm={6} md={6} lg={3}>
        <Card className="card-catalogo" >
          <Card.Img
