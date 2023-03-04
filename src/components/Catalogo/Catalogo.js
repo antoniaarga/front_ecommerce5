@@ -20,7 +20,7 @@ import { useEffect, useState } from 'react';
 
 const Catalogo =   () => {
   const baseURL = process.env.REACT_APP_API_URL
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState([]);
 
   useEffect(() => {
     const axiosConfig ={
