@@ -32,7 +32,7 @@ const Catalogo = () => {
       setPost(response.data.products);
       console.log("respuesta api");
     });
-  }, [post]);
+  }, []);
 
   console.log("revision");
   console.log(post);
