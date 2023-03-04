@@ -15,22 +15,28 @@ import teclado2 from "../img/teclado2.jpg"
 import pack1 from "../img/pack1.jpg"
 import pack2 from "../img/pack2.jpg"
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 
-const Catalogo = async  () => {
+const Catalogo =   () => {
   const baseURL = process.env.REACT_APP_API_URL
-  const axiosConfig ={
-    headers:{
-        authorization:"Bearer "+ localStorage.getItem("token")
-    }, withCredentials: true,
+  const [post, setPost] = React.useState(null);
 
-}
-const res = await axios.get(
-    `${baseURL}/product/all`,
-  axiosConfig
-);
-console.log("hola")
-console.log(res)
+  React.useEffect(() => {
+    const axiosConfig ={
+      headers:{
+          authorization:"Bearer "+ localStorage.getItem("token")
+      }, withCredentials: true,
+  
+  }
+    axios.get( `${baseURL}/product/all`,
+    axiosConfig).then((response) => {
+      setPost(response.data);
+    });
+  }, []);
+
+console.log("revision")
+console.log(post)
 
 
   return (
