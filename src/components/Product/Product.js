@@ -7,10 +7,12 @@ import Col from 'react-bootstrap/esm/Col'
 import Button from 'react-bootstrap/esm/Button'
 import vistateclado1 from "../img/vistateclado1.jpg"
 import vistateclado2 from "../img/vistateclado2.jpg"
+import { useParams } from "react-router-dom";
 
 
 const Product = (props) => {
-  console.log(props.id)
+  const {id} =useParams();//llaves porque useparams es una funcion que devuelve parametros y uno de ellos es id
+  console.log(id)
  return (
    <Container fluid>
      <center>

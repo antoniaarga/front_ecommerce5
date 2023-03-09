@@ -7,9 +7,9 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import "../Catalogo/catalogo.css";
 import banner from "../img/Banner.jpg";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Catalogo = () => {
  
@@ -57,7 +57,7 @@ const Catalogo = () => {
                       size="sm"
                       className="product-button"
                       a
-                      href="/product"
+                      href={"/product?id=" + item._id} //signo de interrogacion es para incluir parametros a una url
                     >
                       Ver Producto
                     </Button>
