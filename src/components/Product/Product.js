@@ -8,11 +8,26 @@ import Button from 'react-bootstrap/esm/Button'
 import vistateclado1 from "../img/vistateclado1.jpg"
 import vistateclado2 from "../img/vistateclado2.jpg"
 import { useParams } from "react-router-dom";
-
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Product = () => {
   const {id} =useParams();//llaves porque useparams es una funcion que devuelve parametros y uno de ellos es id
-  console.log(id)
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    const baseURL = process.env.REACT_APP_API_URL;
+    const axiosConfig = {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      withCredentials: true,
+    };
+    axios.get(`${baseURL}/product/item/${id}`, axiosConfig).then((response) => {
+      setPost(response.data.products);
+      console.log(response.data.products);
+    });
+  }, [id]);
  return (
    <Container fluid>
      <center>
