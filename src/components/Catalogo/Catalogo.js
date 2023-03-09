@@ -57,7 +57,7 @@ const Catalogo = () => {
                       size="sm"
                       className="product-button"
                       a
-                      href={"/product?id=" + item._id} //signo de interrogacion es para incluir parametros a una url
+                      href={"/product/" + item._id} //signo de interrogacion es para incluir parametros a una url
                     >
                       Ver Producto
                     </Button>
