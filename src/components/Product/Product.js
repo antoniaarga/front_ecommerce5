@@ -9,17 +9,18 @@ import vistateclado1 from "../img/vistateclado1.jpg"
 import vistateclado2 from "../img/vistateclado2.jpg"
 
 
-const Product = () => {
+const Product = (props) => {
+  console.log(props.id)
  return (
    <Container fluid>
      <center>
      <Row>
       
        <Col lg={6} sm={12}>
-       <img src={teclado1} className="imagen-principal" />
+       <img src={teclado1} className="imagen-principal"  alt=""/>
      <Row>
        <Col lg={6} md={6}>
-       <img src={vistateclado1} className="imagen-secundaria"/>
+       <img src={vistateclado1} className="imagen-secundaria" alt =""/>
        </Col>
        <Col lg={6} md={6} >
        <img src={vistateclado2} className="imagen-secundaria" alt =""/>

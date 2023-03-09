@@ -1,27 +1,22 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import mouse1 from "../img/mouse1.jpg";
-import casco1 from "../img/casco1.jpg";
-import teclado1 from "../img/teclado1.jpg";
-import microfono1 from "../img/microfono1.jpg";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import "../Catalogo/catalogo.css";
 import banner from "../img/Banner.jpg";
-import mouse2 from "../img/mouse2.jpg";
-import teclado2 from "../img/teclado2.jpg";
-import pack1 from "../img/pack1.jpg";
-import pack2 from "../img/pack2.jpg";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Catalogo = () => {
-  const baseURL = process.env.REACT_APP_API_URL;
+ 
   const [post, setPost] = useState([]);
 
   useEffect(() => {
+    const baseURL = process.env.REACT_APP_API_URL;
     const axiosConfig = {
       headers: {
         authorization: "Bearer " + localStorage.getItem("token"),
@@ -41,7 +36,7 @@ const Catalogo = () => {
     <Container fluid>
       <center>
         <Row>
-          <img src={banner} />
+          <img src={banner} alt = ""/>
           <p className="titulo-seccion pt-5">Productos más vendidos</p>
         </Row>
 
