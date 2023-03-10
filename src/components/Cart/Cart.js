@@ -13,11 +13,9 @@ import { useEffect, useState } from "react";
 const Cart = () => {
   const [post, setPost] = useState([]);
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const procesar = async () => {
-
       const baseURL = process.env.REACT_APP_API_URL;
       const axiosConfig = {
         headers: {
@@ -25,18 +23,21 @@ const Cart = () => {
         },
         withCredentials: true,
       };
-      const carr1= await axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
-        setPost(response.data);
-        console.log(response.data);
-      });
-      const carr2 = await axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
-        setProducts(response.data.products);
-        console.log("respuesta api");
-      });
-    }
+      const carr1 = await axios
+        .get(`${baseURL}/carrito/list`, axiosConfig)
+        .then((response) => {
+          setPost(response.data);
+          console.log(response.data);
+        });
+      const carr2 = await axios
+        .get(`${baseURL}/product/all`, axiosConfig)
+        .then((response) => {
+          setProducts(response.data.products);
+          console.log("respuesta api");
+        });
+    };
     procesar();
-    
-  }, []);
+  }, [post, products]);
   return (
     <Container>
       <center>
