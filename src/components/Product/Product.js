@@ -27,7 +27,8 @@ const Product = () => {
       quantity: 1,
     };
     try {
-      axios.post(`${baseURL}/carrito/addItem`, datos, axiosConfig);
+      const respuesta = await axios.post(`${baseURL}/carrito/addItem`, datos, axiosConfig);
+      
       navigate("/cart");
     } catch (error) {
       return false;
