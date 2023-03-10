@@ -16,24 +16,23 @@ const Product = () => {
   const navigate = useNavigate();
 
   const productoAlCarrito = async () => {
-    const axiosConfig ={
-      headers:{
-          authorization:"Bearer "+ localStorage.getItem("token")
-      }, withCredentials: true,
-
-  }
+    const axiosConfig = {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      withCredentials: true,
+    };
     const datos = {
-      itemId:id,
-      quantity:1,
+      itemId: id,
+      quantity: 1,
     };
     try {
-      const result =  axios.post(`${baseURL}/carrito/addItem`, datos, axiosConfig);
+      axios.post(`${baseURL}/carrito/addItem`, datos, axiosConfig);
       navigate("/cart");
     } catch (error) {
       return false;
     }
-
-  }
+  };
 
   useEffect(() => {
     const baseURL = process.env.REACT_APP_API_URL;
@@ -58,11 +57,9 @@ const Product = () => {
           <Col lg={6} sm={12}>
             <Col lg={6} sm={12}>
               <p className="text-infor-product">{post.name}</p>
-              
-              <li className="li-product">
-                {post.description}
-              </li>
-             
+
+              <li className="li-product">{post.description}</li>
+
               <p className="precio">${post.price}</p>
 
               <Button

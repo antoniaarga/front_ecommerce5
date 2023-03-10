@@ -6,28 +6,45 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Button from "react-bootstrap/esm/Button";
 import logo from "../img/logo.png";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Cart = () => {
+  const [post, setPost] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const baseURL = process.env.REACT_APP_API_URL;
+    const axiosConfig = {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      withCredentials: true,
+    };
+    axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
+      setPost(response.data);
+      console.log(response.data);
+    });
+  }, []);
   return (
     <Container>
       <center>
-      <img className="logo-login" src={logo} alt = "logo" />
-      <p className='titulo-seccion pt-5'>Carrito de Compras</p>
+        <img className="logo-login" src={logo} alt="logo" />
+        <p className="titulo-seccion pt-5">Carrito de Compras</p>
         <Card
           className="card-carrito d-flex flex-column"
           style={{ width: "75%" }}
         >
           <Card.Body>
             <Row className="align-items-center justify-content-center">
-              
-
               <Col lg={2}>
-              <p className="texto-mini">Artículo</p>
+                <p className="texto-mini">Artículo</p>
                 <p>Kone XP Air</p>
               </Col>
 
               <Col lg={2}>
-              <p className="texto-mini">Cantidad</p>
+                <p className="texto-mini">Cantidad</p>
                 <input
                   id="number"
                   type="number"
@@ -37,29 +54,29 @@ const Cart = () => {
               </Col>
 
               <Col lg={2}>
-              <p className="texto-mini">Precio</p>
+                <p className="texto-mini">Precio</p>
                 <p>$45.990</p>
               </Col>
               <Col lg={2}>
-              <Button className="boton-comprar" type="submit" size="sm" >
-                x
-              </Button>
+                <Button className="boton-comprar" type="submit" size="sm">
+                  x
+                </Button>
               </Col>
             </Row>
           </Card.Body>
         </Card>
 
-
-        
-
-        <Button className="boton-comprar" type="submit" size="sm" a href='/checkout'>
-                Proceder al pago
-              </Button>
-            
+        <Button
+          className="boton-comprar"
+          type="submit"
+          size="sm"
+          a
+          href="/checkout"
+        >
+          Proceder al pago
+        </Button>
       </center>
-   
     </Container>
-
   );
 };
 
