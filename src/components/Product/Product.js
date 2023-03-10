@@ -2,18 +2,34 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import "../Product/product.css";
-import teclado1 from "../img/teclado1.jpg";
 import Col from "react-bootstrap/esm/Col";
 import Button from "react-bootstrap/esm/Button";
-import vistateclado1 from "../img/vistateclado1.jpg";
-import vistateclado2 from "../img/vistateclado2.jpg";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Product = () => {
   const { id } = useParams(); //llaves porque useparams es una funcion que devuelve parametros y uno de ellos es id
   const [post, setPost] = useState([]);
+  const baseURL = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
+
+  const productoAlCarrito = async () => {
+    const datos = {
+      itemId:id,
+      quantity:1,
+    };
+    try {
+      const result =  axios.post(`${baseURL}/carrito/addItem`, datos, {
+        withCredentials: true,
+      });
+      navigate("/cart");
+    } catch (error) {
+      return false;
+    }
+
+  }
 
   useEffect(() => {
     const baseURL = process.env.REACT_APP_API_URL;
@@ -43,15 +59,13 @@ const Product = () => {
                 {post.description}
               </li>
              
-
-              <p className="precio">{post.price}</p>
+              <p className="precio">${post.price}</p>
 
               <Button
                 className="boton-comprar"
                 type="submit"
                 size="sm"
-                a
-                href="/cart"
+                onClick={productoAlCarrito}
               >
                 Agregar al Carrito
               </Button>
