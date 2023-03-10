@@ -16,14 +16,18 @@ const Product = () => {
   const navigate = useNavigate();
 
   const productoAlCarrito = async () => {
+    const axiosConfig ={
+      headers:{
+          authorization:"Bearer "+ localStorage.getItem("token")
+      }, withCredentials: true,
+
+  }
     const datos = {
       itemId:id,
       quantity:1,
     };
     try {
-      const result =  axios.post(`${baseURL}/carrito/addItem`, datos, {
-        withCredentials: true,
-      });
+      const result =  axios.post(`${baseURL}/carrito/addItem`, datos, axiosConfig);
       navigate("/cart");
     } catch (error) {
       return false;
