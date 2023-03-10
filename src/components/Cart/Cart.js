@@ -13,71 +13,64 @@ import { useEffect, useState } from "react";
 const Cart = () => {
   const [post, setPost] = useState([]);
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const procesar = async () => {
-      const baseURL = process.env.REACT_APP_API_URL;
-      const axiosConfig = {
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        withCredentials: true,
-      };
-      const carr1 = await axios
-        .get(`${baseURL}/carrito/list`, axiosConfig)
-        .then((response) => {
-          setPost(response.data);
-          console.log(response.data);
-        });
-      const carr2 = await axios
-        .get(`${baseURL}/product/all`, axiosConfig)
-        .then((response) => {
-          setProducts(response.data.products);
-          console.log("respuesta api");
-        });
+    const baseURL = process.env.REACT_APP_API_URL;
+    const axiosConfig = {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      withCredentials: true,
     };
-    procesar();
-  }, [post, products]);
+    axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
+      setPost(response.data);
+      console.log(response.data);
+    });
+    axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
+      setProducts(response.data.products);
+      console.log("respuesta api");
+    });
+  }, []);
   return (
     <Container>
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        {post.map((item) => (
-          <Card
-            className="card-carrito d-flex flex-column"
-            style={{ width: "75%" }}
-          >
-            <Card.Body>
-              <Row className="align-items-center justify-content-center">
-                <Col lg={2}>
-                  <p className="texto-mini">Artículo</p>
-                  <p>{products.find((x) => x._id === post.id).name}</p>
-                </Col>
+        
+        <Card
+          className="card-carrito d-flex flex-column"
+          style={{ width: "75%" }}
+        >
+          <Card.Body>
+            <Row className="align-items-center justify-content-center">
+              <Col lg={2}>
+                <p className="texto-mini">Artículo</p>
+                <p>Kone XP Air</p>
+              </Col>
 
-                <Col lg={2}>
-                  <p className="texto-mini">Cantidad</p>
-                  <input
-                    id="number"
-                    type="number"
-                    value={post.quantity}
-                    className="w-50 input-number mb-3 text-center"
-                  />
-                </Col>
+              <Col lg={2}>
+                <p className="texto-mini">Cantidad</p>
+                <input
+                  id="number"
+                  type="number"
+                  value="42"
+                  className="w-50 input-number mb-3 text-center"
+                />
+              </Col>
 
-                <Col lg={2}>
-                  <p className="texto-mini">Precio</p>
-                  <p>{products.find((x) => x._id === post.id).price}</p>
-                </Col>
-                <Col lg={2}>
-                  <Button className="boton-comprar" type="submit" size="sm">
-                    x
-                  </Button>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        ))}
+              <Col lg={2}>
+                <p className="texto-mini">Precio</p>
+                <p>$45.990</p>
+              </Col>
+              <Col lg={2}>
+                <Button className="boton-comprar" type="submit" size="sm">
+                  x
+                </Button>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
 
         <Button
           className="boton-comprar"
