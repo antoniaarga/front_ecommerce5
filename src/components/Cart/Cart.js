@@ -16,25 +16,26 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const baseURL = process.env.REACT_APP_API_URL;
-    const axiosConfig = {
-      headers: {
-        authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      withCredentials: true,
-    };
-    axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
-      setPost(response.data);
-      console.log(response.data);
-    });
-    axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
-      setProducts(response.data.products);
-      console.log("respuesta api");
-    });
+    const procesar = async () => {
+
+      const baseURL = process.env.REACT_APP_API_URL;
+      const axiosConfig = {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        withCredentials: true,
+      };
+      const carr1= await axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
+        setPost(response.data);
+        console.log(response.data);
+      });
+      const carr2 = await axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
+        setProducts(response.data.products);
+        console.log("respuesta api");
+      });
+    }
+    procesar();
     
-
-
-
   }, []);
   return (
     <Container>
@@ -42,7 +43,7 @@ const Cart = () => {
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
         {post.map((item) => (
-            <Card
+          <Card
             className="card-carrito d-flex flex-column"
             style={{ width: "75%" }}
           >
@@ -50,9 +51,9 @@ const Cart = () => {
               <Row className="align-items-center justify-content-center">
                 <Col lg={2}>
                   <p className="texto-mini">Artículo</p>
-                  <p>{products.find(x=>x._id===post.id).name}</p>
+                  <p>{products.find((x) => x._id === post.id).name}</p>
                 </Col>
-  
+
                 <Col lg={2}>
                   <p className="texto-mini">Cantidad</p>
                   <input
@@ -62,10 +63,10 @@ const Cart = () => {
                     className="w-50 input-number mb-3 text-center"
                   />
                 </Col>
-  
+
                 <Col lg={2}>
                   <p className="texto-mini">Precio</p>
-                  <p>{products.find(x=>x._id===post.id).price}</p>
+                  <p>{products.find((x) => x._id === post.id).price}</p>
                 </Col>
                 <Col lg={2}>
                   <Button className="boton-comprar" type="submit" size="sm">
@@ -75,9 +76,8 @@ const Cart = () => {
               </Row>
             </Card.Body>
           </Card>
-  
-          ))}
-       
+        ))}
+
         <Button
           className="boton-comprar"
           type="submit"
