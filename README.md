@@ -2,6 +2,8 @@
 Proyecto 5 sitio de comercio electronico Bootcamp de desarrollo web fullstack
 Proyecto realizado en Javascript  NodeJS y Express en backend y con React en frontend. Bases de datos creadas en MongoDb.
 El despliegue se ha realizado utilizando Vercel y el Backend corre en Railway.
+Observación: En el carrito de compras, los productos se agregan correctamente en la base de datos, pero añun no se renderiza.(en proceso)
+
 
 
 
