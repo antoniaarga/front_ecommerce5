@@ -37,7 +37,11 @@ const Cart = () => {
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        {post.map((item) => (
+        {post.map((item) =>{
+          const prod = products.find((x)=>x._id===item.itemId)
+
+
+          return (
              <Card
              className="card-carrito d-flex flex-column"
              style={{ width: "75%" }}
@@ -46,7 +50,7 @@ const Cart = () => {
                <Row className="align-items-center justify-content-center">
                  <Col lg={2}>
                    <p className="texto-mini">Artículo</p>
-                   <p>Kone XP Air</p>
+                   <p>{prod.name}</p>
                  </Col>
    
                  <Col lg={2}>
@@ -54,7 +58,7 @@ const Cart = () => {
                    <input
                      id="number"
                      type="number"
-                     value="42"
+                     value={item.quantity}
                      className="w-50 input-number mb-3 text-center"
                    />
                  </Col>
@@ -71,7 +75,7 @@ const Cart = () => {
                </Row>
              </Card.Body>
            </Card>
-          ))}
+          )})}
        
 
         <Button
