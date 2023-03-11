@@ -7,7 +7,6 @@ import Row from "react-bootstrap/esm/Row";
 import Button from "react-bootstrap/esm/Button";
 import logo from "../img/logo.png";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
@@ -50,7 +49,7 @@ const Cart = () => {
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
         {loading
           ? null
-          : post.map((item) => {
+          : (post.map((item) => {
               const prod = products.find((x) => x._id === item.itemId);
 
               return (
@@ -92,7 +91,7 @@ const Cart = () => {
                   </Card.Body>
                 </Card>
               );
-            })}
+            }))}
 
         <Button
           className="boton-comprar"
