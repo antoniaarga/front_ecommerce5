@@ -83,13 +83,13 @@ const Cart = () => {
                         <p>{prod.price}</p>
                       </Col>
                       <Col lg={2}>
-                        <Button
+                        {/* <Button
                           className="boton-comprar"
                           type="submit"
                           size="sm"
                         >
                           x
-                        </Button>
+                        </Button> */}
                       </Col>
                     </Row>
                   </Card.Body>
