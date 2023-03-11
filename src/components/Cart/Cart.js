@@ -14,7 +14,9 @@ const Cart = () => {
   const [post, setPost] = useState([]);
   const [products, setProducts] = useState([]);
 
+  const [loading, setLoading] = useState(false);
   const cargarDatos = () => {
+    setLoading(true);
     const baseURL = process.env.REACT_APP_API_URL;
     const axiosConfig = {
       headers: {
@@ -25,10 +27,16 @@ const Cart = () => {
     axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
       setPost(response.data);
       console.log(response.data);
+      if (post.lenght >= 1 && products.length >= 1) {
+        setLoading(false);
+      }
     });
     axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
       setProducts(response.data.products);
       console.log(response.data.products);
+      if (post.lenght >= 1 && products.length >= 1) {
+        setLoading(false);
+      }
     });
   };
 
@@ -40,45 +48,51 @@ const Cart = () => {
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        {post.map((item) => {
-          const prod = products.find((x) => x._id === item.itemId);
+        {loading
+          ? null
+          : post.map((item) => {
+              const prod = products.find((x) => x._id === item.itemId);
 
-          return (
-            <Card
-              className="card-carrito d-flex flex-column"
-              style={{ width: "75%" }}
-            >
-              <Card.Body>
-                <Row className="align-items-center justify-content-center">
-                  <Col lg={2}>
-                    <p className="texto-mini">Artículo</p>
-                    <p>{prod.name}</p>
-                  </Col>
+              return (
+                <Card
+                  className="card-carrito d-flex flex-column"
+                  style={{ width: "75%" }}
+                >
+                  <Card.Body>
+                    <Row className="align-items-center justify-content-center">
+                      <Col lg={2}>
+                        <p className="texto-mini">Artículo</p>
+                        <p>{prod.name}</p>
+                      </Col>
 
-                  <Col lg={2}>
-                    <p className="texto-mini">Cantidad</p>
-                    <input
-                      id="number"
-                      type="number"
-                      value={item.quantity}
-                      className="w-50 input-number mb-3 text-center"
-                    />
-                  </Col>
+                      <Col lg={2}>
+                        <p className="texto-mini">Cantidad</p>
+                        <input
+                          id="number"
+                          type="number"
+                          value={item.quantity}
+                          className="w-50 input-number mb-3 text-center"
+                        />
+                      </Col>
 
-                  <Col lg={2}>
-                    <p className="texto-mini">Precio</p>
-                    <p>{prod.price}</p>
-                  </Col>
-                  <Col lg={2}>
-                    <Button className="boton-comprar" type="submit" size="sm">
-                      x
-                    </Button>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-          );
-        })}
+                      <Col lg={2}>
+                        <p className="texto-mini">Precio</p>
+                        <p>{prod.price}</p>
+                      </Col>
+                      <Col lg={2}>
+                        <Button
+                          className="boton-comprar"
+                          type="submit"
+                          size="sm"
+                        >
+                          x
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              );
+            })}
 
         <Button
           className="boton-comprar"
