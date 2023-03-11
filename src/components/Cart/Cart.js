@@ -28,6 +28,7 @@ const Cart = () => {
       console.log(response.data);
       if (post.lenght >= 1 && products.length >= 1) {
         setLoading(false);
+        console.log("pruebaif1")
       }
     });
     axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
@@ -35,6 +36,7 @@ const Cart = () => {
       console.log(response.data.products);
       if (post.lenght >= 1 && products.length >= 1) {
         setLoading(false);
+        console.log("pruebaiff2")
       }
     });
   };
