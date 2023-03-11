@@ -13,9 +13,8 @@ import { useEffect, useState } from "react";
 const Cart = () => {
   const [post, setPost] = useState([]);
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
 
-  useEffect(() => {
+  const cargarDatos = () => {
     const baseURL = process.env.REACT_APP_API_URL;
     const axiosConfig = {
       headers: {
@@ -31,52 +30,55 @@ const Cart = () => {
       setProducts(response.data.products);
       console.log(response.data.products);
     });
+  };
+
+  useEffect(() => {
+    cargarDatos();
   }, []);
   return (
     <Container>
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        {post.map((item) =>{
-          const prod = products.find((x)=>x._id===item.itemId)
-
+        {post.map((item) => {
+          const prod = products.find((x) => x._id === item.itemId);
 
           return (
-             <Card
-             className="card-carrito d-flex flex-column"
-             style={{ width: "75%" }}
-           >
-             <Card.Body>
-               <Row className="align-items-center justify-content-center">
-                 <Col lg={2}>
-                   <p className="texto-mini">Artículo</p>
-                   <p>{prod.name}</p>
-                 </Col>
-   
-                 <Col lg={2}>
-                   <p className="texto-mini">Cantidad</p>
-                   <input
-                     id="number"
-                     type="number"
-                     value={item.quantity}
-                     className="w-50 input-number mb-3 text-center"
-                   />
-                 </Col>
-   
-                 <Col lg={2}>
-                   <p className="texto-mini">Precio</p>
-                   <p>{prod.price}</p>
-                 </Col>
-                 <Col lg={2}>
-                   <Button className="boton-comprar" type="submit" size="sm">
-                     x
-                   </Button>
-                 </Col>
-               </Row>
-             </Card.Body>
-           </Card>
-          )})}
-       
+            <Card
+              className="card-carrito d-flex flex-column"
+              style={{ width: "75%" }}
+            >
+              <Card.Body>
+                <Row className="align-items-center justify-content-center">
+                  <Col lg={2}>
+                    <p className="texto-mini">Artículo</p>
+                    <p>{prod.name}</p>
+                  </Col>
+
+                  <Col lg={2}>
+                    <p className="texto-mini">Cantidad</p>
+                    <input
+                      id="number"
+                      type="number"
+                      value={item.quantity}
+                      className="w-50 input-number mb-3 text-center"
+                    />
+                  </Col>
+
+                  <Col lg={2}>
+                    <p className="texto-mini">Precio</p>
+                    <p>{prod.price}</p>
+                  </Col>
+                  <Col lg={2}>
+                    <Button className="boton-comprar" type="submit" size="sm">
+                      x
+                    </Button>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          );
+        })}
 
         <Button
           className="boton-comprar"
