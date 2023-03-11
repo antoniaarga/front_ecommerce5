@@ -17,6 +17,7 @@ const Cart = () => {
   const [loading1, setLoading1] = useState(false);
   const cargarDatos = () => {
     setLoading(true);
+    setLoading1(true);
     const baseURL = process.env.REACT_APP_API_URL;
     const axiosConfig = {
       headers: {
