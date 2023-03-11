@@ -65,7 +65,7 @@ const Cart = () => {
    
                  <Col lg={2}>
                    <p className="texto-mini">Precio</p>
-                   <p>$45.990</p>
+                   <p>{prod.price}</p>
                  </Col>
                  <Col lg={2}>
                    <Button className="boton-comprar" type="submit" size="sm">
