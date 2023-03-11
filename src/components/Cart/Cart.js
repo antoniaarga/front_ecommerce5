@@ -14,6 +14,7 @@ const Cart = () => {
   const [products, setProducts] = useState([]);
 
   const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
   const cargarDatos = () => {
     setLoading(true);
     const baseURL = process.env.REACT_APP_API_URL;
@@ -26,18 +27,18 @@ const Cart = () => {
     axios.get(`${baseURL}/carrito/list`, axiosConfig).then((response) => {
       setPost(response.data);
       console.log(response.data);
-      if (products.length > 0) {
+     
         setLoading(false);
-        console.log("pruebaif1")
-      }
+        
+      
     });
     axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
       setProducts(response.data.products);
       console.log(response.data.products);
-      if (post.lenght > 0) {
-        setLoading(false);
-        console.log("pruebaiff2")
-      }
+     
+        setLoading1(false);
+       
+      
     });
   };
 
@@ -49,7 +50,7 @@ const Cart = () => {
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        {loading
+        {loading || loading1
           ? null
           : (post.map((item) => {
               const prod = products.find((x) => x._id === item.itemId);
