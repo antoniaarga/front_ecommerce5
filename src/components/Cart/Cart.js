@@ -37,40 +37,42 @@ const Cart = () => {
       <center>
         <img className="logo-login" src={logo} alt="logo" />
         <p className="titulo-seccion pt-5">Carrito de Compras</p>
-        
-        <Card
-          className="card-carrito d-flex flex-column"
-          style={{ width: "75%" }}
-        >
-          <Card.Body>
-            <Row className="align-items-center justify-content-center">
-              <Col lg={2}>
-                <p className="texto-mini">Artículo</p>
-                <p>Kone XP Air</p>
-              </Col>
-
-              <Col lg={2}>
-                <p className="texto-mini">Cantidad</p>
-                <input
-                  id="number"
-                  type="number"
-                  value="42"
-                  className="w-50 input-number mb-3 text-center"
-                />
-              </Col>
-
-              <Col lg={2}>
-                <p className="texto-mini">Precio</p>
-                <p>$45.990</p>
-              </Col>
-              <Col lg={2}>
-                <Button className="boton-comprar" type="submit" size="sm">
-                  x
-                </Button>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+        {post.map((item) => (
+             <Card
+             className="card-carrito d-flex flex-column"
+             style={{ width: "75%" }}
+           >
+             <Card.Body>
+               <Row className="align-items-center justify-content-center">
+                 <Col lg={2}>
+                   <p className="texto-mini">Artículo</p>
+                   <p>Kone XP Air</p>
+                 </Col>
+   
+                 <Col lg={2}>
+                   <p className="texto-mini">Cantidad</p>
+                   <input
+                     id="number"
+                     type="number"
+                     value="42"
+                     className="w-50 input-number mb-3 text-center"
+                   />
+                 </Col>
+   
+                 <Col lg={2}>
+                   <p className="texto-mini">Precio</p>
+                   <p>$45.990</p>
+                 </Col>
+                 <Col lg={2}>
+                   <Button className="boton-comprar" type="submit" size="sm">
+                     x
+                   </Button>
+                 </Col>
+               </Row>
+             </Card.Body>
+           </Card>
+          ))}
+       
 
         <Button
           className="boton-comprar"
