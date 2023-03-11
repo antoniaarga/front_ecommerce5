@@ -29,7 +29,7 @@ const Cart = () => {
     });
     axios.get(`${baseURL}/product/all`, axiosConfig).then((response) => {
       setProducts(response.data.products);
-      console.log("respuesta api");
+      console.log(response.data.products);
     });
   }, []);
   return (
